@@ -8,9 +8,9 @@ export default function TaskApp() {
 
   const handleSubmit = () => {
     const value = text.trim();
-    setTaskst((prev) => [...prev, {id:Date.now(), text:value }]);
-    
-
+    // if (!value) return; // 🛠️ prevent empty adds
+    setTasks((prev) => [...prev, {id:Date.now(), text:value }]);
+    setText("")
    
   };
 
@@ -44,12 +44,11 @@ export default function TaskApp() {
           Submit
         </button>
         <p>{text}</p>
-
       </div>
 
       {/*Render Task List and Enable Delete */}
       {/*Pass tasks and onDelete */}
-      <TaskList /* tasks={tasks} onDelete={handleDelete} */ />
+      <TaskList  tasks={tasks} onDelete={handleDelete} />
 
       {/*Clear All */}
       <div className="footerRow">
