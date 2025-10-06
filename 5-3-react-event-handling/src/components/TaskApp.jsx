@@ -1,11 +1,16 @@
-import React, { useState } from "react";
+import React, { use, useState } from "react";
 import TaskList from "./TaskList";
 
 export default function TaskApp() {
 
   const [text, setText] = useState(""); 
-  
+  const [tasks, setTasks] = useState([]);
+
   const handleSubmit = () => {
+    const value = text.trim();
+    setTaskst((prev) => [...prev, {id:Date.now(), text:value }]);
+    
+
    
   };
 
@@ -35,12 +40,11 @@ export default function TaskApp() {
             if (e.key === "Enter") handleSubmit();
           }}
         />
-
         <button className="btn btn--primary" onClick={handleSubmit}>
           Submit
         </button>
-
         <p>{text}</p>
+
       </div>
 
       {/*Render Task List and Enable Delete */}
